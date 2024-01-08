@@ -33,3 +33,4 @@ The backend team has implemented a new endpoint `/models`, and you have recently
    c. Ensure the card does not exceed the height and width of the screen.
    d. The card should be responsive and scale appropriately on smaller screens, with scrolling enabled inside the card for screens that are too short or narrow.
 # front-end-technical-challenge
+
