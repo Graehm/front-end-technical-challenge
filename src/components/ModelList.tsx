@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Card, Typography } from "@mui/joy";
 import { getModels } from "../api/getModels";
