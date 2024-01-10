@@ -1,10 +1,11 @@
-import ModelCard from "../../components/ModelCard"
+import ModelList from "../../components/ModelList";
 
 const Inventory = () => {
   return (
     <div>
       <h1>Hello Inventory :)</h1>
-      <ModelCard />
+      
+      <ModelList /> {/* Ensure that the component name is ModelList, not Modelist */}
     </div>
   );
 };
