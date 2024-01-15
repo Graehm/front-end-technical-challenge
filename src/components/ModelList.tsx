@@ -3,6 +3,11 @@ import { Link } from "react-router-dom";
 import { Card, Typography } from "@mui/joy";
 import { getModels } from "../api/getModels";
 
+interface Model {
+  model_name: string; 
+  model_type: string;
+}
+
 const ModelList = () => {
   const [models, setModels] = useState([]);
 
