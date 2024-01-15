@@ -9,7 +9,7 @@ interface Model {
 }
 
 const ModelList = () => {
-  const [models, setModels] = useState([]);
+  const [models, setModels] = useState<Model[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
