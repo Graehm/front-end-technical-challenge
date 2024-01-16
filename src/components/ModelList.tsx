@@ -25,7 +25,7 @@ const ModelList = () => {
   return (
     <div className="flex flex-wrap gap-4">
       {models.map((model) => (
-        <Link to={`/analysis/${model.model_name}`} key={model.pk}>
+        <Link to={`/analysis/${model.model_name}`} key={model.model_name}>
           <Card
             sx={{
               border: "1px solid transparent",
