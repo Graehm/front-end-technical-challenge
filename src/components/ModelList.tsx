@@ -41,6 +41,7 @@ const ModelList = () => {
                 {model.model_type === "Classification"
                   ? "Classification"
                   : "Regression"}
+                  {/* ts is happening above to classify the model type */}
               </Typography>
             </div>
           </Card>
