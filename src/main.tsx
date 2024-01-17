@@ -5,7 +5,7 @@ import App from "./App.tsx";
 import "./index.css";
 import Home from "./views/Home/Home.tsx";
 import Inventory from "./views/Inventory/Inventory.tsx";
-import Analysis from "./views/Analysis/Analysis.tsx";
+// import Analysis from "./views/Analysis/Analysis.tsx";
 
 const router = createBrowserRouter([
   {
@@ -20,10 +20,10 @@ const router = createBrowserRouter([
         path: "/inventory",
         element: <Inventory />,
       },
-      {
-        path: "/Analysis",
-        element: <Analysis />
-      }
+      // {
+      //   path: "/Analysis",
+      //   element: <Analysis />
+      // }
     ],
   },
 ]);
