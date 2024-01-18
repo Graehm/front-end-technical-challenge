@@ -1,15 +1,12 @@
-import { analysisResponse, modelsResponse } from "./mockedData";
+import { analysisResponse } from "./mockedData";
 import { delay } from "./utils";
-
-const modelNames = modelsResponse.map((model) => model.model_name);
 
 export const getAnalysis = async (modelName: string) => {
   let loading = true;
-  let data: any = [];
+  let data = [];
 
   await delay(1000);
 
-  console.log(modelNames, modelName, modelNames.includes(modelName));
   if (!modelNames.includes(modelName)) {
     data = [null];
     loading = false;
@@ -17,7 +14,16 @@ export const getAnalysis = async (modelName: string) => {
     return { data, loading };
   }
 
-  data = analysisResponse;
+  // Filter out objects with numeric values
+  data = analysisResponse[0]
+    .filter((item) => typeof item.value !== 'object')
+    .map((item) => ({
+      origin: item.origin,
+      value: item.value as string[], // Ensure TypeScript recognizes the type
+      insight_name: item.insight_name,
+      name: item.name,
+    }));
+
   loading = false;
 
   return { data, loading };

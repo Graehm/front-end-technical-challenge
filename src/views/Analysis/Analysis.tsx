@@ -3,10 +3,17 @@ import { useParams } from 'react-router-dom';
 import { getAnalysis } from '../../api/getAnalysis';
 import { ResponsiveBar } from '@nivo/bar';
 
+interface AnalysisData {
+  origin: string;
+  value: string[] | { [key: string]: number };
+  insight_name: string;
+  name: string;
+}
+
 const Analysis = () => {
   const { MODEL_NAME } = useParams<{ MODEL_NAME: string }>() ?? { MODEL_NAME: '' };
-  const [analysisData, setAnalysisData] = useState<Array<Array<any>>>([]);
-  const [loading, setLoading] = useState(true);
+  const [analysisData, setAnalysisData] = useState<NivoChartData[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchData = async () => {
