@@ -3,11 +3,16 @@ import { useParams } from 'react-router-dom';
 import { getAnalysis } from '../../api/getAnalysis';
 import { ResponsiveBar } from '@nivo/bar';
 
-interface AnalysisData {
+interface Analysis {
   origin: string;
   value: string[] | { [key: string]: number };
   insight_name: string;
   name: string;
+}
+
+interface NivoChartData {
+  origin: string;
+  percentage: number; // Assuming 'percentage' is a key in your data
 }
 
 const Analysis = () => {
