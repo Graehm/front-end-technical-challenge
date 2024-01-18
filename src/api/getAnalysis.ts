@@ -1,24 +1,31 @@
 import { analysisResponse } from "./mockedData";
 import { delay } from "./utils";
 
+interface AnalysisDataItem {
+  origin: string;
+  value: string[] | Record<string, number>;
+  insight_name: string;
+  name: string;
+}
+
 export const getAnalysis = async (modelName: string) => {
   let loading = true;
-  let data = [];
+  let data: AnalysisDataItem[] = [];
 
   await delay(1000);
 
-  if (!analysisResponse[0].some((item) => item.origin === modelName)) {
-    data = [null];
+  if (!analysisResponse[0].some(item => item.origin === modelName)) {
+    data = [null!]; // You might want to handle this case differently
     loading = false;
 
     return { data, loading };
   }
 
   data = analysisResponse[0]
-    .filter((item) => typeof item.value !== 'object')
+    .filter((item) => item.origin === modelName)
     .map((item) => ({
       origin: item.origin,
-      value: item.value as string[], 
+      value: item.value,
       insight_name: item.insight_name,
       name: item.name,
     }));

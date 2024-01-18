@@ -3,16 +3,16 @@ import { useParams } from 'react-router-dom';
 import { getAnalysis } from '../../api/getAnalysis';
 import { ResponsiveBar } from '@nivo/bar';
 
-interface AnalysisItem {
+interface AnalysisDataItem {
   origin: string;
-  value: string[] | { [key: string]: number };
+  value: string[] | Record<string, number>;
   insight_name: string;
   name: string;
 }
 
 const Analysis = () => {
   const { MODEL_NAME } = useParams<{ MODEL_NAME: string }>() ?? { MODEL_NAME: '' };
-  const [analysisData, setAnalysisData] = useState<AnalysisItem[]>([]);
+  const [analysisData, setAnalysisData] = useState<AnalysisDataItem[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
@@ -40,7 +40,7 @@ const Analysis = () => {
       <div className="chart-card">
         <ResponsiveBar
           data={analysisData}
-          keys={['percentage']}
+          keys={['percentage']} 
           indexBy="origin"
           layout="horizontal"
           axisBottom={{
