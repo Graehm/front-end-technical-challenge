@@ -9,28 +9,16 @@ interface AnalysisDataItem {
 }
 
 export const getAnalysis = async (modelName: string) => {
-  let loading = true;
-  let data: AnalysisDataItem[] = [];
-
   await delay(1000);
 
-  if (!analysisResponse[0].some(item => item.origin === modelName)) {
-    data = [null!]; // You might want to handle this case differently
-    loading = false;
+  const data: AnalysisDataItem[] = analysisResponse[0].map(item => ({
+    origin: item.origin,
+    value: item.value,
+    insight_name: item.insight_name,
+    name: item.name,
+  }));
 
-    return { data, loading };
-  }
-
-  data = analysisResponse[0]
-    .filter((item) => item.origin === modelName)
-    .map((item) => ({
-      origin: item.origin,
-      value: item.value,
-      insight_name: item.insight_name,
-      name: item.name,
-    }));
-
-  loading = false;
+  const loading = false;
 
   return { data, loading };
 };

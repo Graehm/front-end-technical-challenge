@@ -40,7 +40,7 @@ const Analysis = () => {
       <div className="chart-card">
         <ResponsiveBar
           data={analysisData}
-          keys={['percentage']} 
+          keys={['percentage']}
           indexBy="origin"
           layout="horizontal"
           axisBottom={{
