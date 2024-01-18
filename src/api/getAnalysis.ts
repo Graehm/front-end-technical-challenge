@@ -7,7 +7,7 @@ export const getAnalysis = async (modelName: string) => {
 
   await delay(1000);
 
-  if (!modelNames.includes(modelName)) {
+  if (!modelName.includes(modelName)) {
     data = [null];
     loading = false;
 
