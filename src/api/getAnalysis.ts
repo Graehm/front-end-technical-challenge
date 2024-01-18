@@ -7,7 +7,7 @@ interface TransformedDataItem {
   num_continuous: number;
 }
 
-export const getAnalysis = async (modelName: string) => {
+export const getAnalysis = async () => {
   await delay(1000);
 
   const data: TransformedDataItem[] = modelsResponse.map((model) => ({
