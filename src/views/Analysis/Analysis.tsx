@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getAnalysis } from '../../api/getAnalysis';
 import { ResponsiveBar } from '@nivo/bar';
 
-const AnalysisPage = () => {
+const Analysis = () => {
   const { MODEL_NAME } = useParams<{ MODEL_NAME: string }>() ?? { MODEL_NAME: '' };
   const [analysisData, setAnalysisData] = useState<Array<Array<{
     origin: string;
@@ -51,4 +51,4 @@ const AnalysisPage = () => {
   );
 };
 
-export default AnalysisPage;
+export default Analysis;
