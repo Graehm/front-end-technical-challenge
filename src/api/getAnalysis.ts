@@ -5,7 +5,7 @@ const modelNames = modelsResponse.map((model) => model.model_name);
 
 export const getAnalysis = async (modelName: string) => {
   let loading = true;
-  let data = [];
+  let data: any = [];
 
   await delay(1000);
 

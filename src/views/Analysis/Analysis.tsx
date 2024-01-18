@@ -5,12 +5,7 @@ import { ResponsiveBar } from '@nivo/bar';
 
 const Analysis = () => {
   const { MODEL_NAME } = useParams<{ MODEL_NAME: string }>() ?? { MODEL_NAME: '' };
-  const [analysisData, setAnalysisData] = useState<Array<Array<{
-    origin: string;
-    value: string[] | { [key: string]: number };
-    insight_name: string;
-    name: string;
-  }>>>([]);
+  const [analysisData, setAnalysisData] = useState<Array<Array<any>>>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
