@@ -1,25 +1,22 @@
-import { analysisResponse } from "./mockedData";
+import { modelsResponse } from "./mockedData";
 import { delay } from "./utils";
 
-// this is a typescript thing, defining all variable types of the raw data in mocekdData
-interface AnalysisDataItem {
-  origin: string;
-  value: string[] | Record<string, number>;
-  insight_name: string;
-  name: string;
+interface TransformedDataItem {
+  country: string;
+  model_type: string;
+  num_continuous: number;
 }
 
 export const getAnalysis = async (modelName: string) => {
   await delay(1000);
-// mapping over mockedData and assigning it these variable types
-  const data: AnalysisDataItem[] = analysisResponse[0].map(item => ({
-    origin: item.origin,
-    value: item.value,
-    insight_name: item.insight_name,
-    name: item.name,
+
+  const data: TransformedDataItem[] = modelsResponse.map((model) => ({
+    country: model.model_name,
+    model_type: model.model_type,
+    num_continuous: model.num_continuous,
   }));
 
-  return { data };
+  return data;
 };
 
 
