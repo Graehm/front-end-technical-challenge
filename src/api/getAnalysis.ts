@@ -1,6 +1,7 @@
 import { analysisResponse } from "./mockedData";
 import { delay } from "./utils";
 
+// this is a typescript thing, defining all variable types of the raw data in mocekdData
 interface AnalysisDataItem {
   origin: string;
   value: string[] | Record<string, number>;
@@ -18,9 +19,7 @@ export const getAnalysis = async (modelName: string) => {
     name: item.name,
   }));
 
-  const loading = false;
-
-  return { data, loading };
+  return { data };
 };
 
 
