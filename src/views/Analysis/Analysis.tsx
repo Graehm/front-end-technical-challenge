@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getAnalysis } from '../../api/getAnalysis';
 import { ResponsiveBar } from '@nivo/bar';
 
-const AnalysisPage = () => {
+const Analysis = () => {
   const { MODEL_NAME } = useParams();
   const [analysisData, setAnalysisData] = useState<Array<Array<{
     origin: string;
@@ -16,7 +16,7 @@ const AnalysisPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data, loading } = await getAnalysis(MODEL_NAME);
+        const { MODEL_NAME } = useParams<{ MODEL_NAME: string }>() ?? { MODEL_NAME: '' }
         setAnalysisData(data);
         setLoading(loading);
       } catch (error) {
@@ -51,4 +51,4 @@ const AnalysisPage = () => {
   );
 };
 
-export default AnalysisPage;
+export default Analysis;
