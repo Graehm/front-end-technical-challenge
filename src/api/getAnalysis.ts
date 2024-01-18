@@ -11,7 +11,7 @@ interface AnalysisDataItem {
 
 export const getAnalysis = async (modelName: string) => {
   await delay(1000);
-
+// mapping over mockedData and assigning it these variable types
   const data: AnalysisDataItem[] = analysisResponse[0].map(item => ({
     origin: item.origin,
     value: item.value,

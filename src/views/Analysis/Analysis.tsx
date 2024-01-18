@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import { getAnalysis } from '../../api/getAnalysis';
 import { ResponsiveBar } from '@nivo/bar';
 
-// this is a typescript thing, defining all variable types of the raw data in mocekdData
 interface AnalysisDataItem {
   origin: string;
   value: string[] | Record<string, number>;
@@ -14,26 +13,19 @@ interface AnalysisDataItem {
 const Analysis = () => {
   const { MODEL_NAME } = useParams<{ MODEL_NAME: string }>() ?? { MODEL_NAME: '' };
   const [analysisData, setAnalysisData] = useState<AnalysisDataItem[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const { data } = await getAnalysis(MODEL_NAME);
         setAnalysisData(data);
-        setLoading(loading);
       } catch (error) {
-        console.error('Error fetching analysis data:', error);
-        setLoading(false);
+        console.error('404 error fetching analysis data:', error);
       }
     };
 
     fetchData();
   }, [MODEL_NAME]);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <div>
