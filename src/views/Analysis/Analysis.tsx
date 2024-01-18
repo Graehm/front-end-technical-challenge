@@ -20,7 +20,7 @@ const Analysis = () => {
         const { data } = await getAnalysis(MODEL_NAME);
         setAnalysisData(data);
       } catch (error) {
-        console.error('404 error fetching analysis data:', error);
+        console.error('Error fetching analysis data:', error);
       }
     };
 
@@ -33,7 +33,7 @@ const Analysis = () => {
       <div className="chart-card">
         <ResponsiveBar
           data={analysisData}
-          keys={['percentage']}
+          keys={['percentage']} // Assuming 'percentage' is a key in your data
           indexBy="origin"
           layout="horizontal"
           axisBottom={{
