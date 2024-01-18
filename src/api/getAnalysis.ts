@@ -7,7 +7,7 @@ export const getAnalysis = async (modelName: string) => {
 
   await delay(1000);
 
-  if (!modelName.includes(modelName)) {
+  if (!analysisResponse[0].some((item) => item.origin === modelName)) {
     data = [null];
     loading = false;
 
