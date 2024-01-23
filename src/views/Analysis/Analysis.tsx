@@ -34,7 +34,7 @@ const Analysis = () => {
   return (
     <div>
       <h1>{modelName}</h1>
-      <div className="chart-card">
+      <div className="chart-card h-96">
         <ResponsiveBar
           data={analysisData}
           keys={['value']}
