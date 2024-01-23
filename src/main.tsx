@@ -20,10 +20,10 @@ const router = createBrowserRouter([
         path: "/inventory",
         element: <Inventory />,
       },
-      // {
-      //   path: "/Analysis",
-      //   element: <Analysis />
-      // }
+      {
+        path: "/analysis/:modelName",
+        element: <Analysis />
+      }
     ],
   },
 ]);

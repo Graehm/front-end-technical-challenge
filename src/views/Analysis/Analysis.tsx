@@ -10,13 +10,13 @@ interface ModelData {
 }
 
 const Analysis = () => {
-  const { MODEL_NAME } = useParams<{ MODEL_NAME?: string }>() ?? {};
+  const { modelName } = useParams<{ modelName?: string }>() ?? {};
   const [analysisData, setAnalysisData] = useState<{ origin: string; value: number; insight_name: string; name: string }[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await getAnalysis(MODEL_NAME);
+        const data = await getAnalysis(modelName);
         setAnalysisData(data.map((item: ModelData) => ({
           origin: item.country,
           value: item.num_continuous,
@@ -29,11 +29,11 @@ const Analysis = () => {
     };
 
     fetchData();
-  }, [MODEL_NAME]);
+  }, [modelName]);
 
   return (
     <div>
-      <h1>{MODEL_NAME}</h1>
+      <h1>{modelName}</h1>
       <div className="chart-card">
         <ResponsiveBar
           data={analysisData}
