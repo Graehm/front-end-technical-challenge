@@ -16,6 +16,7 @@ const Analysis = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        //modelName string: undefined but only here 
         const data = await getAnalysis(modelName);
         setAnalysisData(data.map((item: ModelData) => ({
           origin: item.country,
