@@ -2,24 +2,65 @@ import { modelsResponse } from "./mockedData";
 import { delay } from "./utils";
 
 interface TransformedDataItem {
-  country: string;
-  model_type: string;
-  num_continuous: number;
+  origin: string;
+  value: number;
+  insight_name: string;
+  name: string;
 }
 
-export const getAnalysis = async () => {
+export const getAnalysis = async (modelName: string | undefined) => {
   await delay(1000);
 
-  const data: TransformedDataItem[] = modelsResponse.map((model) => ({
-    country: model.model_name,
-    model_type: model.model_type,
-    num_continuous: model.num_continuous,
-  }));
+  if (!modelName) {
+    return []; // Return empty array if modelName is undefined
+  }
+
+  const model = modelsResponse.find((model) => model.model_name === modelName);
+
+  if (!model) {
+    return []; // Return empty array if no matching model found
+  }
+
+  const data: TransformedDataItem[] = [
+    {
+      origin: model.model_name,
+      value: model.num_continuous, // Adjust this based on your data structure
+      insight_name: "insight_name_placeholder", // Replace with actual insight_name
+      name: "name_placeholder", // Replace with actual name
+    },
+  ];
 
   return data;
 };
 
+// --------- FILE FOR ANALYSIS.TSX WHEN PASSING MODELNAME AND NOTTTT GETANALYSIS------ //
+// import { modelsResponse } from "./mockedData";
+// import { delay } from "./utils";
 
+// interface TransformedDataItem {
+//   country: string;
+//   model_type: string;
+//   num_continuous: number;
+// }
+
+// export const getAnalysis = async () => {
+//   await delay(1000);
+
+//   const data: TransformedDataItem[] = modelsResponse.map((model) => ({
+//     country: model.model_name,
+//     model_type: model.model_type,
+//     num_continuous: model.num_continuous,
+//   }));
+
+//   return data;
+// };
+
+
+
+
+
+
+// ---------- OG FILE ------------ //
 // import { analysisResponse, modelsResponse } from "./mockedData";
 // import { delay } from "./utils";
 

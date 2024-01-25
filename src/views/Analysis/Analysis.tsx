@@ -16,6 +16,7 @@ interface AnalysisData {
   name: string
 }
 const Analysis = () => {
+  // const { modelName }: { modelName?: string } = useParams() ----->"possible solution to modelName expected arguments"
   const { modelName } = useParams<{ modelName?: string }>() ?? {};
   const [analysisData, setAnalysisData] = useState<AnalysisData[]>([]);
 
