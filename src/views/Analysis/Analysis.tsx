@@ -24,6 +24,7 @@ useEffect(() => {
     try {
       console.log('fetching from modelName', modelName)
       if (modelName) {
+        console.log('fetched data from getAnalysis data', data)
         const data = await getAnalysis(modelName)
         setAnalysisData(data)
       }
