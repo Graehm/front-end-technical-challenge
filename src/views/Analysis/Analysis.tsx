@@ -57,6 +57,9 @@ useEffect(() => {
   //   fetchData();
   // }, [modelName]);
 
+
+  // add styling to barchart so it renders not only responsive but to scale 
+  // find the vlaue to display the barchart in (percentage or something) -- reference NIVO data for their defining key value pair
   return (
     <div>
       <h1>{modelName}</h1>
