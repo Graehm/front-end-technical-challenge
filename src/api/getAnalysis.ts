@@ -1,4 +1,4 @@
-import { modelsResponse } from "./mockedData";
+import { modelsResponse, analysisResponse } from "./mockedData";
 import { delay } from "./utils";
 
 interface TransformedDataItem {

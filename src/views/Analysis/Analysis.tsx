@@ -39,16 +39,16 @@ useEffect(() => {
     <div>
       <h1>{modelName}</h1>
       <div className="chart-card h-96">
-        <ResponsiveBar
-          data={analysisData}
-          keys={['value']}
-          indexBy="origin"
-          layout="horizontal"
-          axisBottom={{
-            format: (value) => `${value}%`,
-          }}
-          enableGridX={false}
-        />
+          <ResponsiveBar 
+            data={analysisData}
+            keys={['value']}
+            indexBy="origin"
+            layout="horizontal"
+            axisBottom={{
+              format: (value) => `${value}%`,
+            }}
+            enableGridX={false}
+          />
       </div>
     </div>
   );
