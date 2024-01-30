@@ -3,11 +3,6 @@ import { useParams } from 'react-router-dom';
 import { getAnalysis } from '../../api/getAnalysis';
 import { ResponsiveBar } from '@nivo/bar';
 
-// interface ModelData {
-//   country: string
-//   model_type: string
-//   num_continuous: number
-// }
 
 interface AnalysisData {
   origin: string
@@ -38,26 +33,6 @@ useEffect(() => {
 }, [modelName])
 
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       //modelName string: undefined but only here 
-  //       const data = await getAnalysis(modelName);
-  //       setAnalysisData(data.map((item: ModelData) => ({
-  //         origin: item.country,
-  //         value: item.num_continuous,
-  //         insight_name: 'num_continuous',
-  //         name: 'num_continuous',
-  //       })));
-  //     } catch (error) {
-  //       console.error('Error fetching analysis data:', error);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, [modelName]);
-
-
   // add styling to barchart so it renders not only responsive but to scale 
   // find the vlaue to display the barchart in (percentage or something) -- reference NIVO data for their defining key value pair
   return (
@@ -80,3 +55,31 @@ useEffect(() => {
 };
 
 export default Analysis;
+
+
+
+// interface ModelData {
+//   country: string
+//   model_type: string
+//   num_continuous: number
+// }
+
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       //modelName string: undefined but only here 
+  //       const data = await getAnalysis(modelName);
+  //       setAnalysisData(data.map((item: ModelData) => ({
+  //         origin: item.country,
+  //         value: item.num_continuous,
+  //         insight_name: 'num_continuous',
+  //         name: 'num_continuous',
+  //       })));
+  //     } catch (error) {
+  //       console.error('Error fetching analysis data:', error);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, [modelName]);
