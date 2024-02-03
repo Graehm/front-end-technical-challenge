@@ -4,9 +4,10 @@
 
 
 import { useState, useEffect } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { getAnalysis } from '../../api/getAnalysis';
 import { ResponsiveBar } from '@nivo/bar';
+
 
 interface AnalysisData {
   origin: string
@@ -14,48 +15,45 @@ interface AnalysisData {
   insight_name: string
   name: string
 }
-
 const Analysis = () => {
+  // const { modelName }: { modelName?: string } = useParams() ----->"possible solution to modelName expected arguments"
   const { modelName } = useParams<{ modelName?: string }>() ?? {};
   const [analysisData, setAnalysisData] = useState<AnalysisData[]>([]);
-  const history = useHistory();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        console.log('fetching from modelName', modelName)
-        if (modelName) {
-          const data = await getAnalysis(modelName)
-          console.log('fetched data from getAnalysis data', data)
-          setAnalysisData(data)
-        }
-      } catch (error) {
-        console.log('Error fetching specific model car inside useEffect at Analysis.tsx', error)
+useEffect(() => {
+  const fetchData = async () => {
+    try {
+      console.log('fetching from modelName', modelName)
+      if (modelName) {
+        const data = await getAnalysis(modelName)
+        console.log('fetched data from getAnalysis data', data)
+        setAnalysisData(data)
       }
+    } catch (error) {
+      console.log('Error fetching specific model car inside useEffect at Analysis.tsx', error)
     }
+  }
 
-    fetchData()
-  }, [modelName])
+  fetchData()
+}, [modelName])
 
-  const handleBackClick = () => {
-    history.goBack();
-  };
 
+  // add styling to barchart so it renders not only responsive but to scale 
+  // find the vlaue to display the barchart in (percentage or something) -- reference NIVO data for their defining key value pair
   return (
     <div>
       <h1>{modelName}</h1>
-      <button onClick={handleBackClick}>Back</button>
       <div className="chart-card h-96">
-        <ResponsiveBar 
-          data={analysisData}
-          keys={['value']}
-          indexBy="origin"
-          layout="horizontal"
-          axisBottom={{
-            format: (value) => `${value}%`,
-          }}
-          enableGridX={false}
-        />
+          <ResponsiveBar 
+            data={analysisData}
+            keys={['value']}
+            indexBy="origin"
+            layout="horizontal"
+            axisBottom={{
+              format: (value) => `${value}%`,
+            }}
+            enableGridX={false}
+          />
       </div>
     </div>
   );
