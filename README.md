@@ -40,9 +40,6 @@ The backend team has implemented a new endpoint `/models`, and you have recently
 <!-- explain "card" for the barchart -->
 <!-- // 1. what value should i pass through to the keys{[]} 
 // in ResponsiveBar2 explanation of how to transform the data to BarDatum-it wants item and index but our data doesnt have that sort of key:value pair 
-// 3. where to map over analysisresponse? leave getAnalysis alone and add functionality to analysis or do it in getAnalysis
-// 4. look at mockedData and Nivo. display the barchart like Wdiths and heuights to be hamburgers etc and then each has a whole value and a specific modal -->
-
 
 
 <!-- step one 
