@@ -34,3 +34,14 @@ The backend team has implemented a new endpoint `/models`, and you have recently
    d. The card should be responsive and scale appropriately on smaller screens, with scrolling enabled inside the card for screens that are too short or narrow.
 # front-end-technical-challenge
 
+<!-- q's -->
+<!-- in the pathway in main.tsx where is the :modelName being called from - and syntax : more notably -->
+<!-- whats the best location to do the transform data (getAanalysis or Analysis.tsx) -->
+<!-- explain "card" for the barchart -->
+
+<!-- step one 
+display name and classification in top left/right of card with space
+step two -->
+
+
+
