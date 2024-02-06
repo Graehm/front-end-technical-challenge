@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Box, Card, Typography } from "@mui/joy";
+import { Card, Typography } from "@mui/joy";
 import { getModels } from "../api/getModels";
 
 interface Model {
