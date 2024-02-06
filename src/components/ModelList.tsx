@@ -36,7 +36,7 @@ const ModelList = () => {
             }}
           >
             <div className="flex justify-between">
-              <Typography level="body-md">{model.model_name}</Typography>
+              <Typography>{model.model_name}</Typography>
               <Typography style={{ marginLeft: "4px" }}>
                 {model.model_type === "Classification"
                   ? "Classification  "
