@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Card, Typography } from "@mui/joy";
+import { Box, Card, Typography } from "@mui/joy";
 import { getModels } from "../api/getModels";
 
 interface Model {
@@ -37,10 +37,10 @@ const ModelList = () => {
           >
             <div className="flex justify-between">
               <Typography level="body-md">{model.model_name}</Typography>
-              <Typography level="body-md">
+              <Typography style={{ marginLeft: "4px" }}>
                 {model.model_type === "Classification"
-                  ? "Classification"
-                  : "Regression"}
+                  ? "Classification  "
+                  : "  Regression"}
                   {/* ts is happening above to classify the model type */}
               </Typography>
             </div>
