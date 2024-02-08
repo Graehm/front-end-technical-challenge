@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { getAnalysis } from '../../api/getAnalysis';
 import { ResponsiveBar } from '@nivo/bar';
 
@@ -37,18 +37,23 @@ useEffect(() => {
   // find the vlaue to display the barchart in (percentage or something) -- reference NIVO data for their defining key value pair
   return (
     <div>
-      <h1>{modelName}</h1>
+      <div className="flex items-center mb-4">
+        <Link to="/src/components/ModelList.tsx" className="inline-block bg-blue-500 text-white px-4 py-2 rounded-md transition duration-300 ease-in-out hover:bg-blue-600">
+          Back to Model List
+        </Link>
+        <h1 className="ml-4">{modelName}</h1>
+      </div>
       <div className="chart-card h-96">
-          <ResponsiveBar 
-            data={analysisData}
-            keys={['value']}
-            indexBy="origin"
-            layout="horizontal"
-            axisBottom={{
-              format: (value) => `${value}%`,
-            }}
-            enableGridX={false}
-          />
+        <ResponsiveBar
+          data={analysisData}
+          keys={['value']}
+          indexBy="origin"
+          layout="horizontal"
+          axisBottom={{
+            format: (value) => `${value}%`,
+          }}
+          enableGridX={false}
+        />
       </div>
     </div>
   );
