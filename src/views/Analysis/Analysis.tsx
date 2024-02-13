@@ -1,5 +1,5 @@
-import { useState, useEffect, navigate } from 'react';
-import { useParams, Link, Navigate, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useParams, Link, navigate, useNavigate } from 'react-router-dom';
 import { getAnalysis } from '../../api/getAnalysis';
 import { ResponsiveBar } from '@nivo/bar';
 
@@ -41,7 +41,7 @@ useEffect(() => {
       <div>
         {/* Back button to go back to ModelList */}
         <Link to="/ModelList"></Link>
-        <button onClick={() => Navigate(-1)}  className="inline-block bg-blue-500 text-white px-4 py-2 rounded-md transition duration-300 ease-in-out hover:bg-blue-600">Go Back</button>
+        <button onClick={() => navigate(-1)}  className="inline-block bg-blue-500 text-white px-4 py-2 rounded-md transition duration-300 ease-in-out hover:bg-blue-600">Go Back</button>
       </div>
       <h1>{modelName}</h1>
       <div className="chart-card h-96">
