@@ -10,6 +10,7 @@ interface AnalysisData {
   insight_name: string
   name: string
 }
+
 const Analysis = () => {
   // const { modelName }: { modelName?: string } = useParams() ----->"possible solution to modelName expected arguments"
   const { modelName } = useParams<{ modelName?: string }>() ?? {};
@@ -47,8 +48,8 @@ useEffect(() => {
       <div className="chart-card h-96">
           <ResponsiveBar 
             data={analysisData}
-            keys={['value']}
-            indexBy="origin"
+            // keys={['value']}
+            // indexBy="origin"
             layout="horizontal"
             axisBottom={{
               format: (value) => `${value}%`,
