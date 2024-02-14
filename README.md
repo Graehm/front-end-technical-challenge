@@ -45,6 +45,3 @@ The backend team has implemented a new endpoint `/models`, and you have recently
 <!-- step one 
 display name and classification in top left/right of card with space
 step two -->
-
-
-
