@@ -10,7 +10,7 @@ const Analysis: React.FC = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    // Fetch analysis data when the component mounts
+    // Fetching analysis data when the component mounts
     const fetchAnalysisData = async () => {
       try {
         const { data, loading } = await getAnalysis(modelName);
@@ -22,18 +22,18 @@ const Analysis: React.FC = () => {
       }
     };
     fetchAnalysisData();
-  }, [modelName]); // Refetch when modelName changes
+  }, [modelName]); 
 
   const transformAnalysisData = (data: any[]) => {
-    if (!data || !data[0]) return []; // Handle null or empty data
+    if (!data || !data[0]) return []; 
     const transformedData = data[0].map((entry: any) => {
       if (entry.origin !== 'dd') {
         return {
-          country: entry.name.replace('_variable_ranking', ''), // Adjust as per your data structure
+          country: entry.name.replace('_variable_ranking', ''), 
           ...entry.value,
         };
       }
-      return null; // Exclude entries with origin 'dd'
+      return null;
     });
     return transformedData.filter((entry: any) => entry !== null);
   };
