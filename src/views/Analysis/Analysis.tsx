@@ -53,6 +53,7 @@ const Analysis: React.FC = () => {
           valueScale={{ type: 'linear' }}
           indexScale={{ type: 'band', round: true }}
           colors={{ scheme: 'nivo' }}
+          layout="horizontal"
           defs={[
             {
               id: 'dots',
