@@ -36,9 +36,7 @@ useEffect(() => {
 
   // add styling to barchart so it renders not only responsive but to scale 
   // find the vlaue to display the barchart in (percentage or something) -- reference NIVO data for their defining key value pair
-  return (
-
-  );
+  return;
 };
 
 export default Analysis;
