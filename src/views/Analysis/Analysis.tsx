@@ -37,26 +37,7 @@ useEffect(() => {
   // add styling to barchart so it renders not only responsive but to scale 
   // find the vlaue to display the barchart in (percentage or something) -- reference NIVO data for their defining key value pair
   return (
-    <div>
-      <div>
-        {/* Back button to go back to ModelList */}
-        <Link to="/ModelList"></Link>
-        <button onClick={() => navigate(-1)}  className="inline-block bg-blue-500 text-white px-4 py-2 rounded-md transition duration-300 ease-in-out hover:bg-blue-600">Go Back</button>
-      </div>
-      <h1>Analysis for {modelName}</h1>
-      <div className="chart-card h-96">
-          <ResponsiveBar 
-            data={analysisData}
-            keys={['value']}
-            indexBy="origin"
-            layout="horizontal"
-            axisBottom={{
-              format: (value) => `${value}%`,
-            }}
-            enableGridX={false}
-          />
-      </div>
-    </div>
+
   );
 };
 
