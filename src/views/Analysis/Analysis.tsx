@@ -1,61 +1,92 @@
-import { useState, useEffect } from 'react';
-import { useParams, Link, navigate, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { getAnalysis } from '../../api/getAnalysis';
 import { ResponsiveBar } from '@nivo/bar';
 
-
-interface AnalysisData {
-  origin: string
-  value: number
-  insight_name: string
-  name: string
-}
-const Analysis = () => {
-  // const { modelName }: { modelName?: string } = useParams() ----->"possible solution to modelName expected arguments"
-  const { modelName } = useParams<{ modelName?: string }>() ?? {};
-  const [analysisData, setAnalysisData] = useState<AnalysisData[]>([]);
+const Analysis: React.FC = () => {
+  const { modelName } = useParams<{ modelName: string }>();
+  const [analysisData, setAnalysisData] = useState<any[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
   const navigate = useNavigate()
 
-useEffect(() => {
-  const fetchData = async () => {
-    try {
-      console.log('fetching from modelName', modelName)
-      if (modelName) {
-        const data = await getAnalysis(modelName)
-        console.log('fetched data from getAnalysis data', data)
-        setAnalysisData(data)
+  useEffect(() => {
+    // Fetching analysis data when the component mounts
+    const fetchAnalysisData = async () => {
+      try {
+        const { data, loading } = await getAnalysis(modelName);
+        setAnalysisData(transformAnalysisData(data));
+        setLoading(loading);
+      } catch (error) {
+        console.error('Error fetching analysis data:', error);
+        setLoading(false);
       }
-    } catch (error) {
-      console.log('Error fetching specific model car inside useEffect at Analysis.tsx', error)
-    }
-  }
+    };
+    fetchAnalysisData();
+  }, [modelName]); 
 
-  fetchData()
-}, [modelName])
+  const transformAnalysisData = (data: any[]) => {
+    if (!data || !data[0]) return []; 
+    const transformedData = data[0].map((entry: any) => {
+      if (entry.origin !== 'dd') {
+        return {
+          country: entry.name.replace('_variable_ranking', ''), 
+          ...entry.value,
+        };
+      }
+      return null;
+    });
+    return transformedData.filter((entry: any) => entry !== null);
+  };
 
+  if (loading) return <div>Loading...</div>;
 
-  // add styling to barchart so it renders not only responsive but to scale 
-  // find the vlaue to display the barchart in (percentage or something) -- reference NIVO data for their defining key value pair
   return (
     <div>
-      <div>
-        {/* Back button to go back to ModelList */}
-        <Link to="/ModelList"></Link>
-        <button onClick={() => navigate(-1)}  className="inline-block bg-blue-500 text-white px-4 py-2 rounded-md transition duration-300 ease-in-out hover:bg-blue-600">Go Back</button>
-      </div>
       <h1>Analysis for {modelName}</h1>
-      <div className="chart-card h-96">
-          <ResponsiveBar 
-            data={analysisData}
-            keys={['value']}
-            indexBy="origin"
-            layout="horizontal"
-            axisBottom={{
-              format: (value) => `${value}%`,
-            }}
-            enableGridX={false}
-          />
+      <div style={{ height: '400px', width: '100%' }}>
+        <ResponsiveBar
+          data={analysisData}
+          keys={['PetalWidthCm', 'SepalWidthCm', 'PetalLengthCm', 'SepalLengthCm']}
+          indexBy="country"
+          margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
+          padding={0.3}
+          valueScale={{ type: 'linear' }}
+          indexScale={{ type: 'band', round: true }}
+          colors={{ scheme: 'nivo' }}
+          layout="horizontal"
+          defs={[
+            {
+              id: 'dots',
+              type: 'patternDots',
+              background: 'inherit',
+              color: '#38bcb2',
+              size: 4,
+              padding: 1,
+              stagger: true,
+            },
+          ]}
+          fill={[
+            {
+              match: {
+                id: 'fries',
+              },
+              id: 'dots',
+            },
+          ]}
+          borderColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+          axisBottom={{
+            tickSize: 5,
+            tickPadding: 5,
+            tickRotation: 0,
+          }}
+          axisLeft={{
+            tickSize: 5,
+            tickPadding: 5,
+            tickRotation: 0,
+          }}
+        />
       </div>
+      <button onClick={() => navigate(-1)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Go Back</button>
     </div>
   );
 };
