@@ -4,7 +4,7 @@ import { getAnalysis } from '../../api/getAnalysis';
 import { ResponsiveBar } from '@nivo/bar';
 
 const Analysis: React.FC = () => {
-  const { modelName } = useParams<{ modelName: string }>();
+  const { modelName } = useParams<{ modelName?: string }>() || "";;
   const [analysisData, setAnalysisData] = useState<any[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const navigate = useNavigate()
