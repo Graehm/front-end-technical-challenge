@@ -57,17 +57,6 @@ const Analysis: React.FC = () => {
           indexScale={{ type: 'band', round: true }}
           colors={{ scheme: 'nivo' }}
           layout="horizontal"
-          // defs={[
-          //   {
-          //     id: 'dots',
-          //     type: 'patternDots',
-          //     background: 'inherit',
-          //     color: '#38bcb2',
-          //     size: 4,
-          //     padding: 1,
-          //     stagger: true,
-          //   },
-          // ]}
           axisBottom={{
             tickSize: 5,
             tickPadding: 5,
