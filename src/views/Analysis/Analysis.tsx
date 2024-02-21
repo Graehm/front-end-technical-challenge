@@ -42,7 +42,10 @@ const Analysis: React.FC = () => {
 
   return (
     <div>
-      <h1>Analysis for {modelName}</h1>
+      <h1 className="text-center underline font-bold pt-8">
+        Analysis for: {modelName}
+      </h1>
+      <button onClick={() => navigate(-1)} className=" block mx-auto bg-blue-500 hover:bg-blue-700 text-white py-1 px-3 rounded">Go Back</button>
       <div style={{ height: '400px', width: '100%' }}>
         <ResponsiveBar
           data={analysisData}
@@ -54,61 +57,31 @@ const Analysis: React.FC = () => {
           indexScale={{ type: 'band', round: true }}
           colors={{ scheme: 'nivo' }}
           layout="horizontal"
-          defs={[
-            {
-              id: 'dots',
-              type: 'patternDots',
-              background: 'inherit',
-              color: '#38bcb2',
-              size: 4,
-              padding: 1,
-              stagger: true,
-            },
-          ]}
-
-          borderColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+          // defs={[
+          //   {
+          //     id: 'dots',
+          //     type: 'patternDots',
+          //     background: 'inherit',
+          //     color: '#38bcb2',
+          //     size: 4,
+          //     padding: 1,
+          //     stagger: true,
+          //   },
+          // ]}
           axisBottom={{
             tickSize: 5,
             tickPadding: 5,
             tickRotation: 0,
           }}
           axisLeft={{
-            tickSize: 5,
+            tickSize: 10,
             tickPadding: 5,
             tickRotation: 0,
           }}
         />
       </div>
-      <button onClick={() => navigate(-1)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Go Back</button>
     </div>
   );
 };
 
 export default Analysis;
-
-
-// interface ModelData {
-//   country: string
-//   model_type: string
-//   num_continuous: number
-// }
-
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       //modelName string: undefined but only here 
-  //       const data = await getAnalysis(modelName);
-  //       setAnalysisData(data.map((item: ModelData) => ({
-  //         origin: item.country,
-  //         value: item.num_continuous,
-  //         insight_name: 'num_continuous',
-  //         name: 'num_continuous',
-  //       })));
-  //     } catch (error) {
-  //       console.error('Error fetching analysis data:', error);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, [modelName]);
