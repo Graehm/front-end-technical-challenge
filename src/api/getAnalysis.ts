@@ -17,10 +17,6 @@ export const getAnalysis = async (modelName: string) => {
     return { data, loading };
   }
 
-  // data = analysisResponse;
-  // data = analysisResponse.map((entry) => {
-  //   entry.filter((item ) => item.name.startsWith(`${modelName}_`))
-  // })
   loading = false;
 
   return { data, loading };
