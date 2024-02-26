@@ -17,6 +17,7 @@ export const getAnalysis = async (modelName: string) => {
     return { data, loading };
   }
 
+  data = analysisResponse;
   loading = false;
 
   return { data, loading };
